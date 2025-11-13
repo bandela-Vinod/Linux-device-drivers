@@ -1,7 +1,7 @@
 # Linux-device-drivers
 linux device drivers codes
 
-       This repository contains on Linux Device Drivers, covering fundamental driver development concepts, kernel-space programming, and interaction with hardware. The focus is on low-level embedded driver implementation using C and the Linux kernel.
+This repository contains on Linux Device Drivers, covering fundamental driver development concepts, kernel-space programming, and interaction with hardware. The focus is on low-level embedded driver implementation using C and the Linux kernel.
 
 1) Hello wrold program:
     Loading the .ko file adds the module to the kernel and shows “Hello world!” in the log. Using rmmod removes it from the kernel, displaying “Bye hello world” in the log.
