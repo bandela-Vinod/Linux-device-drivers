@@ -11,3 +11,31 @@ This repository contains on Linux Device Drivers, covering fundamental driver de
    The command:   sudo sh -c 'echo "hello kernel via proc" > /proc/proc_read_write'   writes data from user space into the kernel module through the /proc/proc_read_write entry. The kernel module’s write function stores this data in kernel space. Later, using command: cat /proc/proc_read_write   reads the stored data back from the kernel, demonstrating two-way communication between user space and the kernel via the /proc file system.
 
    Makefile:A Makefile tells the kernel build system how to compile driver into a loadable module (.ko).
+3) 3_open_and_release:
+   This project demonstrates a simple Linux character device driver that implements open and release operations.
+Build the module. Run make to compile the kernel module. The .ko file is generated. Load the module.
+$: sudo insmod open_release.ko
+$: sudo dmesg    (see kernel logs)
+ in that kernel log find this like
+open_release -Major Device number: 241
+
+later Create the device node
+
+Use the assigned major number to create a device file:
+
+$: sudo mknod /dev/open_release c 241 0
+
+then Compile the test program (file.c) to produce a.out.
+
+Run the program with the device node:
+
+$: ./a.out /dev/open_release
+Check kernel logs
+
+View driver output in the kernel buffer:
+$: sudo dmesg.
+open_release -Major: 241, Minor 0
+open_release - filp->f_pos: 0
+open_release - filp->f_mode: 0x1d
+open_release - filp->f_flags: 0x8000
+open_release - file is closed
