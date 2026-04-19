@@ -41,7 +41,7 @@ open_release - filp->f_flags: 0x8000
 open_release - file is closed
 
 4) 4_kernal_debug_print : This kernel module demonstrates different log levels using printk and pr_macros. It prints messages during initialization (init) and cleanup (exit) with varying severity.how Linux kernel logging works across info, warning, debug, alert, error, and emergency levels.
-5) ioctl
+5) ioctl :
    After make command got .ko.By use of insmod load to kernel.
 By use of $:sudo dmesg
 
