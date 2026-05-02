@@ -82,5 +82,17 @@ Then check kernel log
 [ 3486.144516] ioctl_example - The val copied!
 [ 3486.144608] release - file is closed
 
+6) 6_thread : After running the make command, I obtained the .ko file. Using insmod, I inserted the module into the kernel, and both kthread_1 and kthread_2 started running in parallel.
+kthread -Init threads
+ kthread - Thread 1 was created and is running now!
+ kthread - Thread 1 is executed! counterVal: 0 kthread- Thread 2 was created and is running now!
+ kthread -Both threads are running now!
+ kthread - Thread 2 is executed! counterVal: 0
+ kthread - Thread 1 is executed! counterVal: 1
+ kthread - Thread 2 is executed! counterVal: 1
+ kthread - Thread 1 is executed! counterVal: 2
+ kthread - Thread 1 is executed! counterVal: 3
+Later, I removed the module with the rmmod command, which stopped both threads.
+
 
    
