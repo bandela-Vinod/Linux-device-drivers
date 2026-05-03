@@ -103,5 +103,7 @@ kthread -Init threads
  kthread - Thread 1 is executed! counterVal: 3
 Later, I removed the module with the rmmod command, which stopped both threads.
 
+7) 7_timer: The kernel module (.ko) is inserted into the kernel using insmod. After 5000 milliseconds or 5 sec, the timer callback function is invoked. The module is later removed using the rmmod command.
+
 
    
