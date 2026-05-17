@@ -107,6 +107,9 @@ Later, I removed the module with the rmmod command, which stopped both threads.
 8) 8_mutex: A mutex is used for thread synchronization. In a mutex, if any thread is waiting for the lock, it will go into the wait state.
    Using insmod, the mutex.ko file is inserted into the kernel. So, kthread_1 and kthread_2 access the critical data in a synchronized manner.The module is later removed using the rmmod command.
 9) 9_hrtimer: Loading a .ko file inserts the kernel module into the Linux kernel,An hrtimer is a Linux kernel high-resolution timer used to execute a callback after a precise time delay. In this code, it triggers after 100 ms and measures the elapsed time using jiffies. It offers higher accuracy than standard kernel timers and is used when precise timing is required inside the kernel and using rmmod removes the module from the kernel.
+10) 10_Dynamic_memory :Loading a .ko file inserts the kernel module into the Linux kernel and using rmmod removes the module from the kernel.
+kmalloc → Allocates memory but leaves it uninitialized (contents are unpredictable).
+kzalloc → Allocates memory and initializes it with zeros. 
 
 
    
