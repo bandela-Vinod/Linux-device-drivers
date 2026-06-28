@@ -109,7 +109,83 @@ Later, I removed the module with the rmmod command, which stopped both threads.
 9) 9_hrtimer: Loading a .ko file inserts the kernel module into the Linux kernel,An hrtimer is a Linux kernel high-resolution timer used to execute a callback after a precise time delay. In this code, it triggers after 100 ms and measures the elapsed time using jiffies. It offers higher accuracy than standard kernel timers and is used when precise timing is required inside the kernel and using rmmod removes the module from the kernel.
 10) 10_Dynamic_memory :Loading a .ko file inserts the kernel module into the Linux kernel and using rmmod removes the module from the kernel.
 kmalloc → Allocates memory but leaves it uninitialized (contents are unpredictable).
-kzalloc → Allocates memory and initializes it with zeros. 
+kzalloc → Allocates memory and initializes it with zeros.
 
+11) 11_module_parameters : 
+
+12) 12_mmap : Linux Kernel mmap Driver Example
+
+This demonstrates how to implement the `mmap()` file operation in a Linux character device driver. The kernel module allocates one page of kernel memory and maps it into user space using `remap_pfn_range()`. A user-space application accesses the mapped memory to read and write data.
+
+## Features
+
+- Linux Character Device Driver
+- Implements the `mmap()` system call
+- Kernel-to-user memory mapping
+- Uses `kzalloc()` for kernel memory allocation
+- Uses `remap_pfn_range()` for memory mapping
+- User-space application to test the driver
+
+## Build the Kernel Module
+
+```bash
+sudo make -C /lib/modules/$(uname -r)/build M=$(pwd) modules
+```
+
+This command compiles the kernel module and generates the `.ko` file.
+
+## Load the Module
+
+Insert the kernel module:
+
+```bash
+sudo insmod mmap.ko
+```
+
+## Create the Device Node
+
+```bash
+sudo mknod /dev/mydev c 64 0
+sudo chmod 666 /dev/mydev
+```
+
+## Compile the User Application
+
+```bash
+cc file.c
+```
+
+## Run the Application
+
+```bash
+./a.out hello
+```
+
+### Sample Output
+
+```text
+Memory mapped successfully!
+Mapped Address: 0x7dd8222dd000
+Written to mapped memory: hello
+Data from mapped memory: hello
+```
+
+The application writes the string `"hello"` into the kernel-mapped memory and then reads it back successfully.
+
+## Remove the Module
+
+Unload the kernel module using:
+
+```bash
+sudo rmmod mmap
+```
+
+## This command cleans the build directory
+
+'''bash
+sudo make -C /lib/modules/$(uname -r)/build M=$(pwd) clean
+'''
+removing all generated files, such as .o, .ko, .mod.c, .mod, .order, .symvers
+ 
 
    
