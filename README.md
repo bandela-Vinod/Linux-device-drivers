@@ -111,7 +111,22 @@ Later, I removed the module with the rmmod command, which stopped both threads.
 kmalloc → Allocates memory but leaves it uninitialized (contents are unpredictable).
 kzalloc → Allocates memory and initializes it with zeros.
 
-11) 11_module_parameters : 
+11) 11_module_parameters :
+    This demonstrates how to pass data to a Linux kernel module at load time using module_param(). It accepts an integer (gpio_nr) and a string (device_name) as module parameters, which can be specified during module insertion with insmod. The module prints the received values to the kernel log using printk(), making it a simple example of kernel module parameter handling.
+$:  sudo insmod parame.ko
+$: sudo dmesg
+
+gpio_nr=12
+device_name=testdevice
+Hello kernal!
+
+$: sudo insmod parame.ko gpio_nr=25 device_name=mydevice
+$: sudo dmesg
+
+gpio_nr=25
+device_name=mydevice
+Hello kernal!
+
 
 12) 12_mmap : Linux Kernel mmap Driver Example
 
