@@ -128,8 +128,7 @@ device_name=mydevice
 Hello kernal!
 
 
-12) 12_mmap : Linux Kernel mmap Driver Example
-
+12) 12_mmap :
 This demonstrates how to implement the `mmap()` file operation in a Linux character device driver. The kernel module allocates one page of kernel memory and maps it into user space using `remap_pfn_range()`. A user-space application accesses the mapped memory to read and write data.
 
 ## Features
@@ -202,8 +201,7 @@ sudo make -C /lib/modules/$(uname -r)/build M=$(pwd) clean
 '''
 removing all generated files, such as .o, .ko, .mod.c, .mod, .order, .symvers
 
-13) 13_GPIO_Control
-    
+13) 13_GPIO_Control:
     This project demonstrates how to control a GPIO pin on a Raspberry Pi 4 Model B using a Linux kernel module written in C.
 The driver uses the Linux GPIO interface to request a GPIO, configure it as an output, turn it ON when the module is loaded, and turn it OFF when the module is unloaded.
 I am controlling GPIO pin 20 by adding an offset of 512 to the GPIO pin number, resulting in a GPIO number of 532 (20 gpio pin number + 512 offset = 532)
